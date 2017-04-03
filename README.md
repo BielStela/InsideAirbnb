@@ -1,2 +1,2 @@
 # InsideAirbnb
-Anàlisis de les dades de InsideAirbnb de Mallorca 
+Anàlisi de les dades de InsideAirbnb de Mallorca 
