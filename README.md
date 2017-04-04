@@ -13,7 +13,7 @@ The folder /notebooks contains documents with the code and results of the data a
 
 _A la carpeta  /noteboooks hi podeu trobar documents "interactius" amb els codis i resultats de les anàlisis que s'estan fent._
 
-## References and guides to follow:
+## References and guides:
 
 [Neighborhood and Price Prediction for San Francisco Airbnb
 Listings](https://pdfs.semanticscholar.org/c50a/1c28dbe7a886148e8f983fb069d4b1439dc6.pdf)
