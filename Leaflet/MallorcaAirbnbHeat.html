@@ -1,0 +1,97 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="UTF-8">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<script src="./lib/leaflet/leaflet.js"></script>
+		<link rel="stylesheet" href="./lib/leaflet/leaflet.css">
+		<link rel="stylesheet" href="lib/leaflet/leaflet.fullscreen.css">
+        <link rel="stylesheet" href="lib/leaflet/Leaflet.Coordinates-0.1.5.css"/>
+	</head>
+	
+	
+	<body class="">
+
+		<div id="map" style="height:700px"></div>	
+		<script type="text/javascript" src="./data/datapoints20170315.js"></script>
+		<script type="text/javascript" src="./lib/leaflet/leaflet-heat.js"></script>
+		<script type="text/javascript" src="lib/leaflet/Leaflet.fullscreen.min.js"></script>
+	
+		<script>
+			
+			var map = L.map('map',
+								{
+								fullscreenControl: true,
+								}
+							).setView([39.57, 2.986239], 10);
+			
+			var OpenStreetMap_Mapnik = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				maxZoom: 19,
+				attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+			});
+			
+			var CartoDB = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+				maxZoom: 18, 
+				attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'
+			  });
+			
+			var CartoDB_DarkMatter = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+				attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+				subdomains: 'abcd',
+				maxZoom: 19
+			});
+			
+			var Stamen_Terrain = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.{ext}', {
+				attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+				subdomains: 'abcd',
+				minZoom: 0,
+				maxZoom: 18,
+				ext: 'png'
+			});
+
+			var baseMaps = {
+				"CartoDB No Labels": CartoDB,
+				"CartoDB Dark": CartoDB_DarkMatter,
+				"OpenStreetMap": OpenStreetMap_Mapnik,
+				"Stamen_Terrain": Stamen_Terrain
+			};
+			
+			var heatStyle = {
+				gradient : {.65: "white", .75:"#FFFF36", .85:"#FF9D00", .9:"#FF1700", .95:"#900000", 1:"black"},
+				minOpacity: 0.75,
+                radius: 7,
+                blur: 7,
+			};
+			
+			map.addLayer(CartoDB)
+			
+			var geojsonMarkerOptions = {
+				radius: 3,
+				fillColor: "#00A507",
+				color: "#000",
+				weight: 1,
+				opacity: 1,
+				fillOpacity: 0.8
+			};
+
+			var jj = L.geoJson(points, {
+				pointToLayer: function (feature, latlng) {
+					return L.circleMarker(latlng, geojsonMarkerOptions);
+				}
+			}).addTo(map);
+			
+			console.log(jj);
+			console.log(points.coordinates);
+			var heatmap = L.heatLayer(points.coordinates, heatStyle);
+			heatmap.addTo(map);
+						
+			L.control.layers(baseMaps).addTo(map);	
+
+
+		</script>
+			
+	
+
+</body></html>
