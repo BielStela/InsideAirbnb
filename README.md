@@ -20,3 +20,8 @@ _A la carpeta  /noteboooks hi podeu trobar documents "interactius" amb els codis
 Listings](https://pdfs.semanticscholar.org/c50a/1c28dbe7a886148e8f983fb069d4b1439dc6.pdf)
 
 * [The effect of Airbnb on house prices in Amsterdam](https://vastgoedkennis-data.vakliteratuur.info/Server/getfile.aspx?file=docs/publicaties/site/UVA/Bijl_VM.pdf)
+
+## Data sources:
+
+* [Ibestat Turisme](http://ibestat.caib.es/ibestat/estadistiques/economia/turisme/0b70b294-81e0-413a-b7b2-3cc3a33593a8)
+* [Ibestat Construcció i habitatge](http://ibestat.caib.es/ibestat/estadistiques/economia/construccio-habitatge/0588995a-189a-46f1-9d0d-b9088d599375)
